@@ -16,23 +16,23 @@ public class Usuario {
     String nom_usu;
     String contra;
     Date nacimiento;
-    long telefon;
+    long telefono;
     String correo;
     String nombre;
     String genero;
     ArrayList<Libro>lista_libros=new ArrayList();
-    ArrayList<Amigo>lista_amigos=new ArrayList();
+    ArrayList<Usuario>lista_amigos=new ArrayList();
 
     public Usuario(String nom_usu, String contra) {
         this.nom_usu = nom_usu;
         this.contra = contra;
     }
 
-    public Usuario(String nom_usu, String contra, Date nacimiento, long telefon, String correo, String nombre, String genero) {
+    public Usuario(String nom_usu, String contra, Date nacimiento, long telefono, String correo, String nombre, String genero) {
         this.nom_usu = nom_usu;
         this.contra = contra;
         this.nacimiento = nacimiento;
-        this.telefon = telefon;
+        this.telefono = telefono;
         this.correo = correo;
         this.nombre = nombre;
         this.genero = genero;
@@ -62,12 +62,12 @@ public class Usuario {
         this.nacimiento = nacimiento;
     }
 
-    public long getTelefon() {
-        return telefon;
+    public long getTelefono() {
+        return telefono;
     }
 
-    public void setTelefon(long telefon) {
-        this.telefon = telefon;
+    public void setTelefon(long telefono) {
+        this.telefono = telefono;
     }
 
     public String getCorreo() {
@@ -102,17 +102,18 @@ public class Usuario {
         this.lista_libros = lista_libros;
     }
 
-    public ArrayList<Amigo> getLista_amigos() {
+    public ArrayList<Usuario> getLista_amigos() {
         return lista_amigos;
     }
 
-    public void setLista_amigos(ArrayList<Amigo> lista_amigos) {
+    public void setLista_amigos(ArrayList<Usuario> lista_amigos) {
         this.lista_amigos = lista_amigos;
     }
 
+    
     @Override
     public String toString() {
-        return "Usuario{" + "nom_usu=" + nom_usu + ", contra=" + contra + ", nacimiento=" + nacimiento + ", telefon=" + telefon + ", correo=" + correo + ", nombre=" + nombre + ", genero=" + genero + ", lista_libros=" + lista_libros + ", lista_amigos=" + lista_amigos + '}';
+        return nom_usu;
     }
 
     
