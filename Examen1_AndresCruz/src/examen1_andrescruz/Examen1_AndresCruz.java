@@ -15,14 +15,16 @@ import javax.swing.table.DefaultTableModel;
  * @author MBanegas
  */
 public class Examen1_AndresCruz extends javax.swing.JFrame {
-    ArrayList<Usuario>usuarios=new ArrayList();   
-    ArrayList<Libro>libros=new ArrayList();    
+    int posicion;
+    ArrayList<Usuario> usuarios = new ArrayList();
+    ArrayList<Libro> libros = new ArrayList();
+
     /**
      * Creates new form Examen1_AndresCruz
      */
-    public Examen1_AndresCruz() {        
-        initComponents();        
-        usuarios.add(new Usuario("Admin","123456"));        
+    public Examen1_AndresCruz() {
+        initComponents();
+        usuarios.add(new Usuario("Admin", "123456"));
     }
 
     /**
@@ -69,6 +71,28 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
         jb_eliminarlib = new javax.swing.JButton();
         jb_close = new javax.swing.JButton();
         jd_usuario = new javax.swing.JDialog();
+        jDialog1 = new javax.swing.JDialog();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        tf_titulo1 = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        ta_descripcion1 = new javax.swing.JTextArea();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        js_puntaje1 = new javax.swing.JSpinner();
+        cb_libgen1 = new javax.swing.JComboBox<>();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        tf_valor1 = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        js_edicion1 = new javax.swing.JSpinner();
+        jLabel28 = new javax.swing.JLabel();
+        tf_autor1 = new javax.swing.JTextField();
+        yc_publicacion1 = new com.toedter.calendar.JYearChooser();
+        jLabel29 = new javax.swing.JLabel();
+        jb_libmod = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
+        js_copias1 = new javax.swing.JSpinner();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jb_iniciar = new javax.swing.JButton();
@@ -288,6 +312,11 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
         jTabbedPane2.addTab("Listar Libros", jPanel5);
 
         jb_modlib.setText("Modificar");
+        jb_modlib.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_modlibMouseClicked(evt);
+            }
+        });
 
         jb_eliminarlib.setText("Eliminar");
         jb_eliminarlib.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -373,6 +402,166 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
         jd_usuarioLayout.setVerticalGroup(
             jd_usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        jLabel22.setText("Titulo del Libro:");
+
+        ta_descripcion1.setColumns(20);
+        ta_descripcion1.setRows(5);
+        jScrollPane3.setViewportView(ta_descripcion1);
+
+        jLabel23.setText("Descripcion:");
+
+        jLabel24.setText("Puntaje del 1-5: ");
+
+        js_puntaje1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
+
+        cb_libgen1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fantasia", "Romance", "Accion", "Historia" }));
+        cb_libgen1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_libgen1ActionPerformed(evt);
+            }
+        });
+
+        jLabel25.setText("Genero: ");
+
+        jLabel26.setText("Valor: ");
+
+        jLabel27.setText("Edicion: ");
+
+        js_edicion1.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        jLabel28.setText("Autor: ");
+
+        jLabel29.setText("Año de Publicacion:");
+
+        jb_libmod.setText("Guardar");
+        jb_libmod.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_libmodMouseClicked(evt);
+            }
+        });
+        jb_libmod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_libmodActionPerformed(evt);
+            }
+        });
+
+        jLabel30.setText("Copias disponibles: ");
+
+        js_copias1.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel25))
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cb_libgen1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(js_puntaje1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(182, 182, 182)
+                        .addComponent(jb_libmod, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel23)
+                                    .addComponent(jLabel26)))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane3)
+                            .addComponent(tf_titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_valor1))
+                        .addGap(90, 90, 90)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel27)
+                            .addComponent(jLabel28)
+                            .addComponent(jLabel29)
+                            .addComponent(jLabel30))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(js_edicion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_autor1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(js_copias1, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(yc_publicacion1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(64, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(tf_titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel27)
+                    .addComponent(js_edicion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel28)
+                            .addComponent(tf_autor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(yc_publicacion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel29))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel30)
+                            .addComponent(js_copias1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel24)
+                            .addComponent(js_puntaje1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel25)
+                            .addComponent(cb_libgen1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jb_libmod, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(tf_valor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDialog1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDialog1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -583,23 +772,23 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
     private void GuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarMouseClicked
         // TODO add your handling code here:
         try {
-            String nom_usu=tf_usu.getText();
-    String contra=tf_contra.getText();
-    Date nacimiento=dc_fecha.getDate();
-    long telefono=Long.parseLong(tf_telefono.getText());
-    String correo=tf_correo.getText();
-    String nombre=tf_nombre.getText();
-    String genero=cb_genero.getSelectedItem().toString();           
-        usuarios.add(new Usuario(nom_usu, contra, nacimiento, telefono, correo, nombre, genero));
-        tf_usu.setText("");
-        tf_contra.setText("");
-        dc_fecha.setDate(new Date());
-        tf_telefono.setText("");
-        tf_correo.setText("");
-        tf_nombre.setText("");        
-        JOptionPane.showMessageDialog(this, "Usuario creado de manera exitosa!!");            
+            String nom_usu = tf_usu.getText();
+            String contra = tf_contra.getText();
+            Date nacimiento = dc_fecha.getDate();
+            long telefono = Long.parseLong(tf_telefono.getText());
+            String correo = tf_correo.getText();
+            String nombre = tf_nombre.getText();
+            String genero = cb_genero.getSelectedItem().toString();
+            usuarios.add(new Usuario(nom_usu, contra, nacimiento, telefono, correo, nombre, genero));
+            tf_usu.setText("");
+            tf_contra.setText("");
+            dc_fecha.setDate(new Date());
+            tf_telefono.setText("");
+            tf_correo.setText("");
+            tf_nombre.setText("");
+            JOptionPane.showMessageDialog(this, "Usuario creado de manera exitosa!!");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Ha ingresado datos incorrectos o no ha llenado todos los espacios!!! Vuelva a Intentarlo!");            
+            JOptionPane.showMessageDialog(this, "Ha ingresado datos incorrectos o no ha llenado todos los espacios!!! Vuelva a Intentarlo!");
         }
     }//GEN-LAST:event_GuardarMouseClicked
 
@@ -613,39 +802,39 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
 
     private void jb_iniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_iniciarMouseClicked
         // TODO add your handling code here:
-        int index=-1;
+        int index = -1;
         for (int i = 0; i < usuarios.size(); i++) {
             if (usuarios.get(i).getNom_usu().equals(tf_usuario.getText())) {
-                index=i;
+                index = i;
                 break;
             }
         }
-        if (index==-1) {
+        if (index == -1) {
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta!!\nPosiblemente no existe... Cree un nuevo usario en la tab crear usuario!");
-        }else{
+        } else {
             if (usuarios.get(index).equals(usuarios.get(0))) {
                 if (usuarios.get(index).getContra().equals(pf_contra.getText())) {
                     this.dispose();
                     jd_libros.setModal(true);
                     jd_libros.pack();
                     jd_libros.setLocationRelativeTo(this);
-                    jd_libros.setVisible(true);                                        
-                }else{
-                JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta!!\nPosiblemente no existe... Cree un nuevo usario en la tab crear usuario!");
+                    jd_libros.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta!!\nPosiblemente no existe... Cree un nuevo usario en la tab crear usuario!");
                 }
-            }else{
+            } else {
                 if (usuarios.get(index).getContra().equals(pf_contra.getText())) {
                     this.dispose();
                     jd_usuario.setModal(true);
                     jd_usuario.pack();
                     jd_usuario.setLocationRelativeTo(this);
-                    jd_usuario.setVisible(true);                  
-                }else{
-                JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta!!\nPosiblemente no existe... Cree un nuevo usario en la tab crear usuario!");
+                    jd_usuario.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta!!\nPosiblemente no existe... Cree un nuevo usario en la tab crear usuario!");
                 }
             }
         }
-        
+
     }//GEN-LAST:event_jb_iniciarMouseClicked
 
     private void cb_libgenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_libgenActionPerformed
@@ -655,31 +844,31 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
     private void jb_libguarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_libguarMouseClicked
         // TODO add your handling code here:
         try {
-            String titulo=tf_titulo.getText();
-    String descripcion=ta_descripcion.getText();
-    int puntaje=((int)js_puntaje.getValue());
-    int copias=((int)js_copias.getValue());
-    String genero=cb_libgen.getSelectedItem().toString();
-    double valor=Double.parseDouble(tf_valor.getText());
-    String edicion=js_edicion.getValue()+" Edicion";
-    String autor=tf_autor.getText();
-    int publicacion=yc_publicacion.getValue();    
-    tf_titulo.setText("");
-    ta_descripcion.setText("");
-    js_puntaje.setValue(1);
-    js_copias.setValue(1);
-    cb_libgen.setSelectedIndex(0);
-    tf_valor.setText("");
-    js_edicion.setValue(1);
-    tf_autor.setText("");
-    yc_publicacion.setValue(2018);
-    libros.add(new Libro(titulo, descripcion, puntaje, copias, genero, valor, edicion, autor, publicacion));
-    JOptionPane.showMessageDialog(this, "Libro creado de manera exitosa!!");
-    
+            String titulo = tf_titulo.getText();
+            String descripcion = ta_descripcion.getText();
+            int puntaje = ((int) js_puntaje.getValue());
+            int copias = ((int) js_copias.getValue());
+            String genero = cb_libgen.getSelectedItem().toString();
+            double valor = Double.parseDouble(tf_valor.getText());
+            String edicion = js_edicion.getValue() + " Edicion";
+            String autor = tf_autor.getText();
+            int publicacion = yc_publicacion.getValue();
+            tf_titulo.setText("");
+            ta_descripcion.setText("");
+            js_puntaje.setValue(1);
+            js_copias.setValue(1);
+            cb_libgen.setSelectedIndex(0);
+            tf_valor.setText("");
+            js_edicion.setValue(1);
+            tf_autor.setText("");
+            yc_publicacion.setValue(2018);
+            libros.add(new Libro(titulo, descripcion, puntaje, copias, genero, valor, edicion, autor, publicacion));
+            JOptionPane.showMessageDialog(this, "Libro creado de manera exitosa!!");
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Datos invalidos, intentelo nuevamente!");
         }
-    
+
     }//GEN-LAST:event_jb_libguarMouseClicked
 
     private void jb_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_closeMouseClicked
@@ -694,59 +883,127 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
 
     private void jb_listusuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_listusuMouseClicked
         jt_tablalibros.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Titulo", "Edicion", "Copias", "Año de Publicacion", "Valor", "Genero"
-            }
+                new Object[][]{},
+                new String[]{
+                    "Titulo", "Edicion", "Copias", "Año de Publicacion", "Valor", "Genero"
+                }
         ) {
-            Class[] types = new Class [] {
+            Class[] types = new Class[]{
                 java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+                return types[columnIndex];
             }
         });
-        
+
         for (int i = 0; i < libros.size(); i++) {
-                        Object[]newrow={
-            libros.get(i).getTitulo(),
+            Object[] newrow = {
+                libros.get(i).getTitulo(),
                 libros.get(i).getEdicion(),
                 libros.get(i).getCopias(),
                 libros.get(i).getPublicacion(),
                 libros.get(i).getValor(),
                 libros.get(i).getGenero()
             };
-            DefaultTableModel modelo=(DefaultTableModel)jt_tablalibros.getModel();
+            DefaultTableModel modelo = (DefaultTableModel) jt_tablalibros.getModel();
             modelo.addRow(newrow);
             jt_tablalibros.setModel(modelo);
-        }        
+        }
     }//GEN-LAST:event_jb_listusuMouseClicked
 
     private void jb_eliminarlibMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_eliminarlibMouseClicked
         // TODO add your handling code here:
-        String imprimir="";
+        String imprimir = "";
         for (int i = 0; i < libros.size(); i++) {
-            imprimir+=i+" - "+libros.get(i);
+            imprimir += i + " - " + libros.get(i);
         }
-        boolean flag=true;
-        while(flag){
-        try {
-            int option=Integer.parseInt(JOptionPane.showInputDialog(imprimir+"Ingrese que libro desea eliminar segun su posicion: "));
-            libros.remove(option);
-            flag=false;
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Ingrese una posicion valida: ");
-        }        
+        boolean flag = true;
+        while (flag) {
+            try {
+                int option = Integer.parseInt(JOptionPane.showInputDialog(imprimir + "Ingrese que libro desea eliminar segun su posicion: "));
+                libros.remove(option);
+                flag = false;
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Ingrese una posicion valida: ");
+            }
         }
     }//GEN-LAST:event_jb_eliminarlibMouseClicked
+
+    private void jb_modlibMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_modlibMouseClicked
+        // TODO add your handling code here:
+       String imprimir = "";
+        for (int i = 0; i < libros.size(); i++) {
+            imprimir += i + " - " + libros.get(i);
+        }
+        boolean flag = true;
+        while (flag) {
+            try {
+                posicion = Integer.parseInt(JOptionPane.showInputDialog(imprimir + "Ingrese que libro desea modificar segun su posicion: "));        
+                while(posicion<0||posicion>libros.size()){
+                posicion = Integer.parseInt(JOptionPane.showInputDialog(imprimir + "Ingrese que libro desea modificar segun su posicion: "));        
+                }
+                flag = false;                
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Ingrese una posicion valida: ");
+            }
+        }
+        tf_titulo1.setText(libros.get(posicion).getTitulo());
+            ta_descripcion1.setText(libros.get(posicion).getDescripcion());
+            js_puntaje1.setValue(libros.get(posicion).getPuntaje());
+            js_copias1.setValue(libros.get(posicion).getCopias());
+            cb_libgen1.setSelectedIndex(0);
+            tf_valor1.setText(Double.toString(libros.get(posicion).getValor()));
+            js_edicion1.setValue(1);
+            tf_autor1.setText(libros.get(posicion).getAutor());
+            yc_publicacion1.setValue(libros.get(posicion).getPublicacion());
+        jDialog1.pack();
+                    jDialog1.setModal(true);                    
+                    jDialog1.setLocationRelativeTo(this);
+        jDialog1.setVisible(true);
+    }//GEN-LAST:event_jb_modlibMouseClicked
+
+    private void cb_libgen1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_libgen1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_libgen1ActionPerformed
+
+    private void jb_libmodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_libmodMouseClicked
+        // TODO add your handling code here:
+        try {
+            String titulo = tf_titulo1.getText();
+            String descripcion = ta_descripcion1.getText();
+            int puntaje = ((int) js_puntaje1.getValue());
+            int copias = ((int) js_copias1.getValue());
+            String genero = cb_libgen1.getSelectedItem().toString();
+            double valor = Double.parseDouble(tf_valor1.getText());
+            String edicion = js_edicion1.getValue() + " Edicion";
+            String autor = tf_autor1.getText();
+            int publicacion = yc_publicacion1.getValue();
+            tf_titulo1.setText("");
+            ta_descripcion1.setText("");
+            js_puntaje1.setValue(1);
+            js_copias1.setValue(1);
+            cb_libgen1.setSelectedIndex(0);
+            tf_valor1.setText("");
+            js_edicion1.setValue(1);
+            tf_autor1.setText("");
+            yc_publicacion1.setValue(2018);
+            libros.set(posicion, new Libro(titulo, descripcion, puntaje, copias, genero, valor, edicion, autor, publicacion));
+            JOptionPane.showMessageDialog(this, "Libro modificado de manera exitosa!!");
+            jDialog1.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Datos invalidos, intentelo nuevamente!");
+        }            
+    }//GEN-LAST:event_jb_libmodMouseClicked
+
+    private void jb_libmodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_libmodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_libmodActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {        
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -783,7 +1040,9 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cb_genero;
     private javax.swing.JComboBox<String> cb_libgen;
+    private javax.swing.JComboBox<String> cb_libgen1;
     private com.toedter.calendar.JDateChooser dc_fecha;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -798,7 +1057,16 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -811,33 +1079,44 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JButton jb_close;
     private javax.swing.JButton jb_eliminarlib;
     private javax.swing.JButton jb_iniciar;
     private javax.swing.JButton jb_libguar;
+    private javax.swing.JButton jb_libmod;
     private javax.swing.JButton jb_listusu;
     private javax.swing.JButton jb_modlib;
     private javax.swing.JDialog jd_libros;
     private javax.swing.JDialog jd_usuario;
     private javax.swing.JSpinner js_copias;
+    private javax.swing.JSpinner js_copias1;
     private javax.swing.JSpinner js_edicion;
+    private javax.swing.JSpinner js_edicion1;
     private javax.swing.JSpinner js_puntaje;
+    private javax.swing.JSpinner js_puntaje1;
     private javax.swing.JTable jt_tablalibros;
     private javax.swing.JPasswordField pf_contra;
     private javax.swing.JTextArea ta_descripcion;
+    private javax.swing.JTextArea ta_descripcion1;
     private javax.swing.JTextField tf_autor;
+    private javax.swing.JTextField tf_autor1;
     private javax.swing.JTextField tf_contra;
     private javax.swing.JTextField tf_correo;
     private javax.swing.JTextField tf_nombre;
     private javax.swing.JTextField tf_telefono;
     private javax.swing.JTextField tf_titulo;
+    private javax.swing.JTextField tf_titulo1;
     private javax.swing.JTextField tf_usu;
     private javax.swing.JTextField tf_usuario;
     private javax.swing.JTextField tf_valor;
+    private javax.swing.JTextField tf_valor1;
     private com.toedter.calendar.JYearChooser yc_publicacion;
+    private com.toedter.calendar.JYearChooser yc_publicacion1;
     // End of variables declaration//GEN-END:variables
 }
