@@ -14,9 +14,6 @@ public class Libro {
     String edicion;
     String autor;
     int publicacion;
-//su título, descripción, puntaje (1 a 5), copias
-//disponibles, genero (Fantasía, Romance, Acción, Historia), valor, edición, autor y año de
-//publicación.    
 
     public Libro(String titulo, String descripcion, int puntaje, int copias, String genero, double valor, String edicion, String autor, int publicacion) {
         this.titulo = titulo;
@@ -104,7 +101,7 @@ public class Libro {
 
     @Override
     public String toString() {
-        return "Libro{" + "titulo=" + titulo + ", descripcion=" + descripcion + ", puntaje=" + puntaje + ", copias=" + copias + ", genero=" + genero + ", valor=" + valor + ", edicion=" + edicion + ", autor=" + autor + ", publicacion=" + publicacion + '}';
+        return "Titulo=" + titulo +" Genero=" + genero + " Valor=" + valor + " Edicion=" + edicion + " Autor=" + autor + " Año de publicacion=" + publicacion+"\n";
     }
     
 }

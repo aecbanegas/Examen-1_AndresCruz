@@ -8,20 +8,21 @@ package examen1_andrescruz;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author MBanegas
  */
 public class Examen1_AndresCruz extends javax.swing.JFrame {
-    ArrayList<Usuario>usuarios=new ArrayList();    
-    boolean sesion=false;
+    ArrayList<Usuario>usuarios=new ArrayList();   
+    ArrayList<Libro>libros=new ArrayList();    
     /**
      * Creates new form Examen1_AndresCruz
      */
     public Examen1_AndresCruz() {        
         initComponents();        
-        usuarios.add(new Usuario("Admin","123456"));
+        usuarios.add(new Usuario("Admin","123456"));        
     }
 
     /**
@@ -60,6 +61,13 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         js_copias = new javax.swing.JSpinner();
         jPanel5 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jt_tablalibros = new javax.swing.JTable();
+        jb_listusu = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jb_modlib = new javax.swing.JButton();
+        jb_eliminarlib = new javax.swing.JButton();
+        jb_close = new javax.swing.JButton();
         jd_usuario = new javax.swing.JDialog();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
@@ -127,6 +135,11 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
                 jb_libguarMouseClicked(evt);
             }
         });
+        jb_libguar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_libguarActionPerformed(evt);
+            }
+        });
 
         jLabel21.setText("Copias disponibles: ");
 
@@ -137,9 +150,9 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15)
                             .addComponent(jLabel16))
@@ -151,10 +164,15 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
                         .addComponent(jb_libguar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel17))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel17)))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1)
                             .addComponent(tf_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,23 +234,97 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(tf_valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Crear Libros", jPanel4);
+
+        jt_tablalibros.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Titulo", "Edicion", "Copias", "Año de Publicacion", "Valor", "Genero"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jt_tablalibros);
+
+        jb_listusu.setText("Generar Lista");
+        jb_listusu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_listusuMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 729, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jb_listusu)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 337, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jb_listusu)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Listar y Modificar Libros", jPanel5);
+        jTabbedPane2.addTab("Listar Libros", jPanel5);
+
+        jb_modlib.setText("Modificar");
+
+        jb_eliminarlib.setText("Eliminar");
+        jb_eliminarlib.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_eliminarlibMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addComponent(jb_modlib, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(122, 122, 122)
+                .addComponent(jb_eliminarlib, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(150, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jb_eliminarlib, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                    .addComponent(jb_modlib, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Modificar o Eliminar", jPanel6);
+
+        jb_close.setText("Cerrar Sesion");
+        jb_close.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_closeMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -241,7 +333,9 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(318, 318, 318)
                 .addComponent(jLabel13)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jb_close, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane2)
@@ -251,7 +345,9 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_close, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jTabbedPane2)
                 .addContainerGap())
@@ -567,7 +663,7 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
     double valor=Double.parseDouble(tf_valor.getText());
     String edicion=js_edicion.getValue()+" Edicion";
     String autor=tf_autor.getText();
-    int publicacion=yc_publicacion.getValue();
+    int publicacion=yc_publicacion.getValue();    
     tf_titulo.setText("");
     ta_descripcion.setText("");
     js_puntaje.setValue(1);
@@ -577,11 +673,75 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
     js_edicion.setValue(1);
     tf_autor.setText("");
     yc_publicacion.setValue(2018);
+    libros.add(new Libro(titulo, descripcion, puntaje, copias, genero, valor, edicion, autor, publicacion));
+    JOptionPane.showMessageDialog(this, "Libro creado de manera exitosa!!");
+    
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Datos invalidos, intentelo nuevamente!");
         }
     
     }//GEN-LAST:event_jb_libguarMouseClicked
+
+    private void jb_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_closeMouseClicked
+        // TODO add your handling code here:
+        jd_libros.dispose();
+        this.setVisible(true);
+    }//GEN-LAST:event_jb_closeMouseClicked
+
+    private void jb_libguarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_libguarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_libguarActionPerformed
+
+    private void jb_listusuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_listusuMouseClicked
+        jt_tablalibros.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Titulo", "Edicion", "Copias", "Año de Publicacion", "Valor", "Genero"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        
+        for (int i = 0; i < libros.size(); i++) {
+                        Object[]newrow={
+            libros.get(i).getTitulo(),
+                libros.get(i).getEdicion(),
+                libros.get(i).getCopias(),
+                libros.get(i).getPublicacion(),
+                libros.get(i).getValor(),
+                libros.get(i).getGenero()
+            };
+            DefaultTableModel modelo=(DefaultTableModel)jt_tablalibros.getModel();
+            modelo.addRow(newrow);
+            jt_tablalibros.setModel(modelo);
+        }        
+    }//GEN-LAST:event_jb_listusuMouseClicked
+
+    private void jb_eliminarlibMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_eliminarlibMouseClicked
+        // TODO add your handling code here:
+        String imprimir="";
+        for (int i = 0; i < libros.size(); i++) {
+            imprimir+=i+" - "+libros.get(i);
+        }
+        boolean flag=true;
+        while(flag){
+        try {
+            int option=Integer.parseInt(JOptionPane.showInputDialog(imprimir+"Ingrese que libro desea eliminar segun su posicion: "));
+            libros.remove(option);
+            flag=false;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ingrese una posicion valida: ");
+        }        
+        }
+    }//GEN-LAST:event_jb_eliminarlibMouseClicked
 
     /**
      * @param args the command line arguments
@@ -594,7 +754,7 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -650,16 +810,23 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JButton jb_close;
+    private javax.swing.JButton jb_eliminarlib;
     private javax.swing.JButton jb_iniciar;
     private javax.swing.JButton jb_libguar;
+    private javax.swing.JButton jb_listusu;
+    private javax.swing.JButton jb_modlib;
     private javax.swing.JDialog jd_libros;
     private javax.swing.JDialog jd_usuario;
     private javax.swing.JSpinner js_copias;
     private javax.swing.JSpinner js_edicion;
     private javax.swing.JSpinner js_puntaje;
+    private javax.swing.JTable jt_tablalibros;
     private javax.swing.JPasswordField pf_contra;
     private javax.swing.JTextArea ta_descripcion;
     private javax.swing.JTextField tf_autor;
