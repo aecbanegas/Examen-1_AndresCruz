@@ -22,6 +22,7 @@ public class Usuario {
     String genero;
     ArrayList<Libro>lista_libros=new ArrayList();
     ArrayList<Usuario>lista_amigos=new ArrayList();
+    ArrayList<Usuario>lista_noamigos=new ArrayList();
 
     public Usuario(String nom_usu, String contra) {
         this.nom_usu = nom_usu;
@@ -98,6 +99,14 @@ public class Usuario {
         return lista_libros;
     }
 
+    public ArrayList<Usuario> getLista_noamigos() {
+        return lista_noamigos;
+    }
+
+    public void setLista_noamigos(ArrayList<Usuario> lista_noamigos) {
+        this.lista_noamigos = lista_noamigos;
+    }
+    
     public void setLista_libros(ArrayList<Libro> lista_libros) {
         this.lista_libros = lista_libros;
     }
