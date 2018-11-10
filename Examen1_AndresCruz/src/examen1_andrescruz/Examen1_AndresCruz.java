@@ -79,6 +79,7 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jScrollPane9 = new javax.swing.JScrollPane();
         jTextArea5 = new javax.swing.JTextArea();
+        jButton6 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
@@ -452,6 +453,13 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
         jTextArea5.setRows(5);
         jScrollPane9.setViewportView(jTextArea5);
 
+        jButton6.setText("Regresar un libro");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -462,8 +470,10 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jButton3)
-                        .addGap(222, 222, 222)
-                        .addComponent(jButton4)))
+                        .addGap(135, 135, 135)
+                        .addComponent(jButton4)
+                        .addGap(93, 93, 93)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -472,7 +482,8 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(jButton4)
+                    .addComponent(jButton6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1514,6 +1525,26 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        String imprimir="";
+        ArrayList<Libro>libros=usuarios.get(Index).getLista_libros();
+        for (int i = 0; i < libros.size(); i++) {
+            imprimir+=i+" - "+libros.get(i)+"\n";
+        }
+        try {
+            int option=Integer.parseInt(JOptionPane.showInputDialog(imprimir+"Ingrese la posicion del libro que desea regresar: "));
+            while(option<0||option>libros.size()){
+                option=Integer.parseInt(JOptionPane.showInputDialog(imprimir+"Ingrese la posicion del libro que desea regresar: "));
+            }
+            libros.add(usuarios.get(Index).getLista_libros().get(option));
+            usuarios.get(Index).getLista_libros().remove(option);
+            JOptionPane.showMessageDialog(this, "Se regreso de manera exitosa!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ingrese posiciones validas!");
+        }
+    }//GEN-LAST:event_jButton6MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1563,6 +1594,7 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
