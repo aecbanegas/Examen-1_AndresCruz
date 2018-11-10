@@ -103,6 +103,13 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
         js_posami = new javax.swing.JSpinner();
         jLabel36 = new javax.swing.JLabel();
         js_posli = new javax.swing.JSpinner();
+        jPanel12 = new javax.swing.JPanel();
+        jButton5 = new javax.swing.JButton();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
+        jLabel37 = new javax.swing.JLabel();
+        posAmigo1 = new javax.swing.JSpinner();
+        jButton1 = new javax.swing.JButton();
         jLabel31 = new javax.swing.JLabel();
         jb_cerrar = new javax.swing.JButton();
         jDialog1 = new javax.swing.JDialog();
@@ -435,6 +442,11 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
         });
 
         jButton4.setText("Tomar un libro de la Biblioteca");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         jTextArea5.setColumns(20);
         jTextArea5.setRows(5);
@@ -662,6 +674,66 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
         );
 
         jTabbedPane3.addTab("Prestar Libro", jPanel11);
+
+        jButton5.setText("Listar Amigos");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
+        jTextArea3.setColumns(20);
+        jTextArea3.setRows(5);
+        jTextArea3.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jTextArea3.setEnabled(false);
+        jScrollPane10.setViewportView(jTextArea3);
+
+        jLabel37.setText("Ingrese la posicion del amigo al que desea eliminar: ");
+
+        posAmigo1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        jButton1.setText("Eliminar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton5)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(139, Short.MAX_VALUE))
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jLabel37)
+                .addGap(18, 18, 18)
+                .addComponent(posAmigo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(165, 165, 165))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel37)
+                    .addComponent(posAmigo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addContainerGap())
+        );
+
+        jTabbedPane3.addTab("Eliminar Amigo", jPanel12);
 
         jLabel31.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         jLabel31.setText("Menu de Usuario");
@@ -1123,7 +1195,9 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
             } else {
                 if (usuarios.get(index).getContra().equals(pf_contra.getText())) {
                     if (usuarios.get(index).getLista_noamigos().isEmpty()) {
-                        noamigos=usuarios;
+                        for (int i = 0; i < usuarios.size(); i++) {
+                            noamigos.add(usuarios.get(i));
+                        }
                     }else{
                         noamigos=usuarios.get(index).getLista_noamigos();
                     }
@@ -1177,6 +1251,8 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
 
     private void jb_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_closeMouseClicked
         // TODO add your handling code here:
+        tf_usuario.setText("");
+        pf_contra.setText("");
         jd_libros.dispose();
         this.setVisible(true);
     }//GEN-LAST:event_jb_closeMouseClicked
@@ -1306,15 +1382,17 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
 
     private void jb_cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_cerrarMouseClicked
         // TODO add your handling code here:
+        tf_usuario.setText("");
+        pf_contra.setText("");
         usuarios.get(Index).setLista_noamigos(noamigos);
         noamigos.clear();
-        dispose();
+        jd_usuario.dispose();
         this.setVisible(true);
     }//GEN-LAST:event_jb_cerrarMouseClicked
 
     private void jb_listapersonasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_listapersonasMouseClicked
         // TODO add your handling code here:
-        if (noamigos.size()<=2) {
+        if (noamigos.size()<0) {
             JOptionPane.showMessageDialog(this, "No se puede realizar la operacion debido a que no hay mas usuarios!");
         }else{
         String imprimir="";
@@ -1332,9 +1410,9 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
     private void jb_agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_agregarMouseClicked
         // TODO add your handling code here:
         try {
-            usuarios.get(Index).getLista_amigos().add(usuarios.get((int)posAmigo.getValue()));
+            usuarios.get(Index).getLista_amigos().add(noamigos.get((int)posAmigo.getValue()));
             noamigos.remove((int)posAmigo.getValue());
-            
+            JOptionPane.showMessageDialog(this, "Agrego Amigo de manera correcta!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Posicion invalida!");
         }                
@@ -1344,9 +1422,9 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
         String imprimir="";
-        ArrayList<Usuario>amigos=usuarios.get(Index).getLista_amigos();
-        for (int i = 0; i < amigos.size(); i++) {
-            imprimir+=i+" - "+amigos.get(i)+"\n";
+        ArrayList<Usuario>ami=usuarios.get(Index).getLista_amigos();
+        for (int i = 0; i < ami.size(); i++) {
+            imprimir+=i+" - "+ami.get(i)+"\n";
         }
         jTextArea2.setText(imprimir);
     }//GEN-LAST:event_jButton2MouseClicked
@@ -1356,6 +1434,7 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
         String imprimir="";
         ArrayList<Libro>libros=usuarios.get(Index).getLista_libros();
         if (libros.isEmpty()) {
+            jTextArea5.setText("");
             JOptionPane.showMessageDialog(this, "No tiene libros");
         }else{
             for (int i = 0; i < libros.size(); i++) {
@@ -1390,10 +1469,50 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
         try {
             usuarios.get(Index).getLista_amigos().get((int)js_posami.getValue()).getLista_libros().add(usuarios.get(Index).getLista_libros().get((int)js_posli.getValue()));
             usuarios.get(Index).getLista_libros().remove((int)js_posli.getValue());
+            JOptionPane.showMessageDialog(this, "Prestamo correcto!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Posicion invalidas, actualice la lista!");
         }
     }//GEN-LAST:event_PrestarMouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        String imprimir="";
+        for (int i = 0; i < libros.size(); i++) {
+            imprimir+=i+" - "+libros.get(i)+"\n";
+        }
+        try {
+            int option=Integer.parseInt(JOptionPane.showInputDialog(imprimir+"Ingrese la posicion del libro que desea obtener: "));
+            while(option<0||option>libros.size()){
+                option=Integer.parseInt(JOptionPane.showInputDialog(imprimir+"Ingrese la posicion del libro que desea obtener: "));
+            }
+            usuarios.get(Index).getLista_libros().add(libros.get(option));
+            JOptionPane.showMessageDialog(this, "Obtuvo el libro de manera exitosa!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ingrese posiciones validas!");
+        }
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        String imprimir="";
+        ArrayList<Usuario>ami=usuarios.get(Index).getLista_amigos();
+        for (int i = 0; i < ami.size(); i++) {
+            imprimir+=i+" - "+ami.get(i)+"\n";
+        }
+        jTextArea3.setText(imprimir);
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        try {
+            usuarios.get(Index).getLista_noamigos().add(usuarios.get(Index).getLista_amigos().get((int)posAmigo1.getValue()));
+            usuarios.get(Index).getLista_amigos().remove((int)posAmigo1.getValue());
+            JOptionPane.showMessageDialog(this, "Se elimino de manera correcta el amigo!Actualice la lista!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un erro al querer ejecutar la operacion, actualice la lista e intentelo nuevamente!");
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1439,9 +1558,11 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_libgen;
     private javax.swing.JComboBox<String> cb_libgen1;
     private com.toedter.calendar.JDateChooser dc_fecha;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
@@ -1474,6 +1595,7 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1483,6 +1605,7 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1492,6 +1615,7 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1503,6 +1627,7 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea5;
     private javax.swing.JButton jb_agregar;
     private javax.swing.JButton jb_cerrar;
@@ -1528,6 +1653,7 @@ public class Examen1_AndresCruz extends javax.swing.JFrame {
     private javax.swing.JTextArea librospropios;
     private javax.swing.JPasswordField pf_contra;
     private javax.swing.JSpinner posAmigo;
+    private javax.swing.JSpinner posAmigo1;
     private javax.swing.JTextArea ta_agregar;
     private javax.swing.JTextArea ta_descripcion;
     private javax.swing.JTextArea ta_descripcion1;
